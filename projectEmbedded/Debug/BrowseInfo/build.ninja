@@ -1,0 +1,71 @@
+##IAR Ninja build file
+
+
+#Rules
+rule COMPILER_XCL
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\XclFileGenerator.exe $xclcommand -f "$rspfile_name"
+  description = IAR_NEW_TOOL+++COMPILER_XCL+++$in+++C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\XclFileGenerator.exe $flags
+  rspfile = $rspfile_name
+  rspfile_content = $flags
+
+rule INDEXER
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\SourceIndexer.exe $flags
+  depfile = $out.dep
+  description = IAR_NEW_TOOL+++INDEXER+++$out+++C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\SourceIndexer.exe $flags
+
+rule MAKEBROWSE
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\makeBrowseData.exe $flags
+  description = IAR_NEW_TOOL+++MAKEBROWSE+++$out+++C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\makeBrowseData.exe $flags
+
+rule PDBLINK
+  command = C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\PbdLink.exe $flags
+  description = IAR_NEW_TOOL+++PDBLINK+++$out+++C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\common\bin\PbdLink.exe $flags
+
+
+
+#Build steps
+build G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\adc.xcl : COMPILER_XCL 
+  xclcommand = -source_file G$:\EMBEDDED\projectEmbedded\adc.c -xcl_file G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\adc.xcl -macro_file G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\adc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = G$:\EMBEDDED\projectEmbedded\adc.c -o G$:\EMBEDDED\projectEmbedded\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -Ol --predef_macros G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\adc.tmp
+  rspfile_name = G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\adc.xcl.rsp
+
+build G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\dio.xcl : COMPILER_XCL 
+  xclcommand = -source_file G$:\EMBEDDED\projectEmbedded\dio.c -xcl_file G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\dio.xcl -macro_file G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\dio.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = G$:\EMBEDDED\projectEmbedded\dio.c -o G$:\EMBEDDED\projectEmbedded\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -Ol --predef_macros G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\dio.tmp
+  rspfile_name = G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\dio.xcl.rsp
+
+build G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.xcl : COMPILER_XCL 
+  xclcommand = -source_file G$:\EMBEDDED\projectEmbedded\main.c -xcl_file G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.xcl -macro_file G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = G$:\EMBEDDED\projectEmbedded\main.c -o G$:\EMBEDDED\projectEmbedded\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -Ol --predef_macros G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.tmp
+  rspfile_name = G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.xcl.rsp
+
+build G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\temperature.xcl : COMPILER_XCL 
+  xclcommand = -source_file G$:\EMBEDDED\projectEmbedded\temperature.c -xcl_file G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\temperature.xcl -macro_file G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\temperature.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\bin\iccarm.exe"
+  flags = G$:\EMBEDDED\projectEmbedded\temperature.c -o G$:\EMBEDDED\projectEmbedded\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.0\arm\inc\c\DLib_Config_Normal.h" -Ol --predef_macros G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\temperature.tmp
+  rspfile_name = G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\temperature.xcl.rsp
+
+build G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\adc.pbi : INDEXER G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\adc.xcl |  $
+G$:\EMBEDDED\projectEmbedded\adc.c
+  flags = -out=G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\adc.pbi -f G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\adc.xcl
+
+build G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\dio.pbi : INDEXER G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\dio.xcl |  $
+G$:\EMBEDDED\projectEmbedded\dio.c
+  flags = -out=G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\dio.pbi -f G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\dio.xcl
+
+build G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.pbi : INDEXER G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.xcl |  $
+G$:\EMBEDDED\projectEmbedded\main.c
+  flags = -out=G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.pbi -f G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.xcl
+
+build G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\temperature.pbi : INDEXER G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\temperature.xcl |  $
+G$:\EMBEDDED\projectEmbedded\temperature.c
+  flags = -out=G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\temperature.pbi -f G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\temperature.xcl
+
+build G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.pbw : MAKEBROWSE G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.pbd
+  flags = G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.pbd -output G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.pbw
+
+build G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.pbd : PDBLINK G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\adc.pbi |  $
+G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\dio.pbi $
+G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.pbi $
+G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\temperature.pbi
+  flags = -M G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.pbd G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\adc.pbi G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\dio.pbi G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\main.pbi G$:\EMBEDDED\projectEmbedded\Debug\BrowseInfo\temperature.pbi
+
